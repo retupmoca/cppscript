@@ -11,6 +11,37 @@ namespace __glob {
 }
 
 namespace term {
+    namespace color {
+        const std::string reset("\033[0m");
+
+        const std::string black("\033[0;30m");
+        const std::string red("\033[0;31m");
+        const std::string green("\033[0;32m");
+        const std::string yellow("\033[0;33m");
+        const std::string blue("\033[0;34m");
+        const std::string magenta("\033[0;35m");
+        const std::string cyan("\033[0;36m");
+        const std::string white("\033[0;37m");
+
+        const std::string bg_black("\033[0;40m");
+        const std::string bg_red("\033[0;41m");
+        const std::string bg_green("\033[0;42m");
+        const std::string bg_yellow("\033[0;43m");
+        const std::string bg_blue("\033[0;44m");
+        const std::string bg_magenta("\033[0;45m");
+        const std::string bg_cyan("\033[0;46m");
+        const std::string bg_white("\033[0;47m");
+
+        const std::string bold_black("\033[1;30m");
+        const std::string bold_red("\033[1;31m");
+        const std::string bold_green("\033[1;32m");
+        const std::string bold_yellow("\033[1;33m");
+        const std::string bold_blue("\033[1;34m");
+        const std::string bold_magenta("\033[1;35m");
+        const std::string bold_cyan("\033[1;36m");
+        const std::string bold_white("\033[1;37m");
+    }
+
     template<typename... Targs>
     void print(Targs... Fargs) {
         std::cout << fmt::format(Fargs...);
