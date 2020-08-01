@@ -2,6 +2,7 @@
 #include <memory>
 #include <string>
 #include <vector>
+#include <functional>
 
 #include <fmt/format.h>
 #include <cstdarg>
@@ -66,6 +67,38 @@ namespace term {
     std::string input(Targs... Fargs) {
         print(Fargs...);
         return getline();
+    }
+
+    void menu(bool repeated, std::string title, std::vector<std::pair<std::string, std::function<void()>>> options) {
+        do {
+            say();
+            say("{}{}{}", color::bold_white, title, color::reset);
+            say();
+            int i = 0;
+            for (auto &o : options) {
+                say("{}{}{}) {}", color::bold_cyan, ++i, color::reset, o.first);
+            }
+            say();
+            say("{}q{}) Quit", color::bold_red, color::reset);
+            say();
+
+            std::string menu = term::input("{}Selection?{} ", color::bold_white, color::reset);
+
+            if (menu == "q")
+                return;
+
+            try {
+                int selected = std::stoi(menu);
+
+                options[selected - 1].second();
+            }
+            catch(std::invalid_argument) {
+                say("Invalid option.");
+            }
+            catch(std::bad_function_call) {
+                say("Invalid option.");
+            }
+        } while(repeated);
     }
 }
 

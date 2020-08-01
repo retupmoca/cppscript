@@ -17,7 +17,7 @@ if [ "$checksum" != "$exist_checksum" ]; then
             -Wextra \
             -Werror \
             -O2 \
-            -std=c++2a \
+            -std=c++17 \
             -o "$bin_name" \
             -x c++ - \
             -lfmt
