@@ -92,10 +92,10 @@ namespace term {
 
                 options[selected - 1].second();
             }
-            catch(std::invalid_argument) {
+            catch(std::invalid_argument const &) {
                 say("Invalid option.");
             }
-            catch(std::bad_function_call) {
+            catch(std::bad_function_call const &) {
                 say("Invalid option.");
             }
         } while(repeated);
